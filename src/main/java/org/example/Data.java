@@ -15,7 +15,9 @@ import org.json.simple.JSONArray;
 public class Data {
     public JSONObject selectDatabase(String[] path, String query){
         try {
-            Connection connection = DriverManager.getConnection("jdbc:sqlite:../../../../../SQLite/Database/ecommerce.db");
+            String rootPath = System.getProperty("user.dir");
+            String url = "jdbc:sqlite:" + rootPath + "/ecommerce.db";
+            Connection connection = DriverManager.getConnection(url);
             Statement statement = connection.createStatement();
             System.out.println("connection berhasil");
             if(path[1].equals("users")){
